@@ -1,0 +1,59 @@
+import java.util.*;
+
+public class MaxOfMins {
+    public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+        
+       
+        int k = scanner.nextInt();
+        
+        int n = scanner.nextInt();
+        
+      
+        int[] array = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            
+            array[i] = scanner.nextInt();
+        }
+        
+       
+        int result = getMaxOfMins(array, k);
+        
+       
+        System.out.println(result);
+    }
+
+    private static int getMaxOfMins(int[] arr, int k) {
+        
+        int maxOfMins = Integer.MIN_VALUE;
+
+        for (int i = 0; i <= arr.length - k; i++) {
+
+           
+            int currentMin = findMin(arr, i, k);
+
+
+
+           
+            maxOfMins = Math.max(maxOfMins, currentMin);
+
+        }
+
+        return maxOfMins;
+    }
+
+    private static int findMin(int[] arr, int start, int k) {
+        
+        int min = Integer.MAX_VALUE;
+
+
+        
+        for (int j = start; j < start + k; j++) {
+            
+            min = Math.min(min, arr[j]);
+        }
+        return min;
+    }
+}
